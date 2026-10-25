@@ -1,6 +1,6 @@
-# Lab pre-read
+# Lab Pre-Read
 
-### Changing project
+### Changing Scope
 
 1. From the left-hand side menu, click on **Account**
 2. From the top navigation bar, select **Projects**
@@ -8,7 +8,7 @@
 
 ![image](https://github.com/user-attachments/assets/b4e736c3-8b7a-4043-89fa-3a690ff169ff)
 
-### Changing harness modules
+### Changing Harness Module
 
 - As part of this lab, we will switch between modules several times
 
@@ -25,8 +25,8 @@ In order to switch modules:
 ## Key Outcomes
 
 - Configure a basic CI pipeline  
+- Run unit tests to validate code
 - Build and push artifacts to a remote repository  
-- Run unit tests to verify build success
 
 ## Overview
 
