@@ -1,38 +1,43 @@
-## Tom's Lab pre-read
+# Lab pre-read
 
 ### Changing project
+
 1. From the left-hand side menu, click on **Account**
 2. From the top navigation bar, select **Projects**
 3. Click the desired project; everything will be scoped to that project
 
-<img width="410" height="275" alt="image" src="https://github.com/user-attachments/assets/b4e736c3-8b7a-4043-89fa-3a690ff169ff" />
+![image](https://github.com/user-attachments/assets/b4e736c3-8b7a-4043-89fa-3a690ff169ff)
 
 ### Changing harness modules
+
 - As part of this lab, we will switch between modules several times
 
 In order to switch modules:
+
 1. Click on the **nine dot** menu icon
 2. Select the module relevant to the step
 3. The lab begins in the Unified View > Pipelines
 
-<img width="362" height="193" alt="image" src="https://github.com/user-attachments/assets/2d953dd9-b370-4308-9504-a9bf13f7fb9a" />
-
+![image](https://github.com/user-attachments/assets/2d953dd9-b370-4308-9504-a9bf13f7fb9a)
 
 ## Lab 1: Build
 
 ## Key Outcomes
+
 - Configure a basic CI pipeline  
 - Build and push artifacts to a remote repository  
-- Run unit tests to verify build success  
+- Run unit tests to verify build success
 
 ## Overview
+
 In this lab, the user sets up a CI pipeline that runs source code tests, builds the executable, and pushes the artifact to a remote Docker repository. This establishes the foundation for a deployable artifact that can be promoted through environments.
 
 ---
 
-## Walkthrough
+# Walkthrough
 
 ### Step 1: Create a Pipeline
+
 1. In the Harness UI, from the left-hand menu, navigate to **Projects** and select your assigned project
 2. Use the **Changing Harness Module** pre-read instruction to enable the **unified view**
 
@@ -41,107 +46,108 @@ In this lab, the user sets up a CI pipeline that runs source code tests, builds 
 2. From the left-hand side menu, select **Pipelines**
 3. Click **+ Create a Pipeline**, enter the following values, then click **Start**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name       | <pre>`workshop`</pre>||
-| How do you want to setup your pipeline | Inline | This indicates that Harness (rather than Git) will be the source of truth for the pipeline |
-|`                `|`                            `|`                `|
+| Input                                  | Value      | Notes                                                                                      |
+| -------------------------------------- | ---------- | ------------------------------------------------------------------------------------------ |
+| Name                                   | `workshop` |                                                                                            |
+| How do you want to setup your pipeline | Inline     | This indicates that Harness (rather than Git) will be the source of truth for the pipeline |
 
----
 
 ### Step 2: Add a Build Stage
+
 1. From Pipeline Studio, click **Add Stage** and select **Build** as the Stage Type
 2. Enter the following values and click on **Set Up Stage**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Stage Name | <pre>`Build`</pre>||
-| Clone Codebase | Enabled ||
-| Repository Name | <pre>`harness-devsecops`</pre>||
-|`                `|`                            `|`                `|
+| Input           | Value               | Notes |
+| --------------- | ------------------- | ----- |
+| Stage Name      | `Build`             |       |
+| Clone Codebase  | Enabled             |       |
+| Repository Name | `harness-devsecops` |       |
 
 ---
 
 ### Step 3: Configure Infrastructure
+
 1. Navigate to the **Infrastructure** tab
 2. Configure as follows:
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Infrastructure | Cloud ||
-|`                `|`                            `|`                `|
+| Input          | Value | Notes |
+| -------------- | ----- | ----- |
+| Infrastructure | Cloud |       |
+
 
 ---
 
 ### Step 4: Configure Execution Steps
+
 Navigate to the **Execution** tab and add the following steps:
 
 **Test Intelligence Step**
+
 1. Click **Add Step**, then **Add Step** again
 2. Select **Test Intelligence** from the Step Library
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`Run Tests With Intelligence`</pre>||
-| Command | <pre>`pip install pytest & cd ./python-tests`</pre>| The GitHub repo is a monorepo with application(s) and configuration in the same repo. Therefore we need to navigate to the application subfolder. |
-|`                `|`                            `|`                `|
+| Input   | Value                                    | Notes                                                                                                                                             |
+| ------- | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name    | `Run Tests With Intelligence`            |                                                                                                                                                   |
+| Command | `pip install pytest & cd ./python-tests` | The GitHub repo is a monorepo with application(s) and configuration in the same repo. Therefore we need to navigate to the application subfolder. |
+
 
 3. Click **Apply Changes**
 
 **Compile Application (Template)**
+
 1. Click **Add Step**, then **Use Template**
 2. Select the **Compile Application** template
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`Compile`</pre>||
-|`                `|`                            `|`                `|
+| Input | Value     | Notes |
+| ----- | --------- | ----- |
+| Name  | `Compile` |       |
 
 3. Click **Apply Changes**
 
 **Build and Push to Docker**
+
 1. Click **Add Step**, then **Add Step** again
 2. Select **Build and Push an image to Docker Registry** from the Step Library
 3. Click on **Third Party Artifact Registry**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`Push to DockerHub`</pre>||
-| Docker Connector | dockerhub |Third Party Artifact Registry|
-| Docker Repository | <pre>`nikpap/harness-workshop`</pre>||
-| Tags | <pre>`<+variable.username>-<+pipeline.sequenceId>`</pre>| Click on the pin and select expression and paste the value |
-| **Optional Configuration** |||
-| Dockerfile | <pre>`/harness/frontend-app/harness-webapp/Dockerfile`</pre>| This tells Harness where the Dockerfile is for building the app |
-| Context | <pre>`/harness/frontend-app/harness-webapp`</pre>| This tells from where to run the instructions included in the Dockerfile |
-|`                `|`                            `|`                `|
+| Input                      | Value                                             | Notes                                                                    |
+| -------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
+| Name                       | `Push to DockerHub`                               |                                                                          |
+| Docker Connector           | dockerhub                                         | Third Party Artifact Registry                                            |
+| Docker Repository          | `nikpap/harness-workshop`                         |                                                                          |
+| Tags                       | `<+variable.username>-<+pipeline.sequenceId>`     | Click on the pin and select expression and paste the value               |
+| **Optional Configuration** |                                                   |                                                                          |
+| Dockerfile                 | `/harness/frontend-app/harness-webapp/Dockerfile` | This tells Harness where the Dockerfile is for building the app          |
+| Context                    | `/harness/frontend-app/harness-webapp`            | This tells from where to run the instructions included in the Dockerfile |
 
 3. Click **Apply Changes**
 
 ---
 
 ### Step 5: Save and Test the Pipeline
+
 1. Click **Save** to finalize the pipeline
 2. Click **Run** to manually execute it
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Branch Name | <pre>`main`</pre>| Prepopulated |
-|`                `|`                            `|`                `|
+| Input       | Value  | Notes        |
+| ----------- | ------ | ------------ |
+| Branch Name | `main` | Prepopulated |
 
 > [!WARNING]
 > Pipeline execution is rejected by the policy engine, let's create a compliant pipeline
 > Proceed to the Lab 2: DevSecOps
 
-
-
 ## Lab 2: DevSecOps
 
 ## Key Outcomes
+
 - Understand how governance plays a role in the path to production  
 - Leverage reusable templates to standardize security scanning  
-- Achieve DevSecOps practices with minimal developer friction  
+- Achieve DevSecOps practices with minimal developer friction
 
 ## Overview
+
 In this lab, the security team has implemented orchestration of **Fortify** and **OWASP** scans in reusable templates. Policies enforce the inclusion of these templates in all pipelines, ensuring security scans are always executed before deployment.
 
 ![](https://lh7-us.googleusercontent.com/docsz/AD_4nXcLr5TGcKRWOjVgB_sCAHHEeLPyd6EBdnkt2-mq_imTkZbQMEwJD03Q1wZyhWqHxoCNIIYWJWlRbnZrvZn2pPYIwTzXlOGdhMDEgn-J2JnK7lVastmfpdwTqDHXjpP0DK3TgU1gM-Ec_0iZLicWV7KpgW2FdXUCcAtraDGaEz8hI3dpWGLXkg?key=cRG2cvp_PHVW0KG2Gq6Y_A)
@@ -151,6 +157,7 @@ In this lab, the security team has implemented orchestration of **Fortify** and 
 ## Walkthrough
 
 ### Step 1: Add Security Scanning Steps
+
 1. In the existing pipeline, within the **Build** stage, **before** the **Push to DockerHub** step, click the **+** icon to add a new step
 2. Select **Use Template**
 
@@ -158,36 +165,35 @@ In this lab, the security team has implemented orchestration of **Fortify** and 
 
 3. Select **DevX Fortify Scan**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`Fortify`</pre>||
-|`                `|`                            `|`                `|
+| Input | Value     | Notes |
+| ----- | --------- | ----- |
+| Name  | `Fortify` |       |
 
 4. Click **Apply Changes**
 
 ---
 
 ### Step 2: Add OWASP Scan
+
 1. In the existing pipeline, within the **Build** stage, **after** the **Push to DockerHub** step, click the **+** icon to add a new step
 2. Select **Use Template**
 3. Select **OWASP**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`OWASP`</pre>||
-|`                `|`                            `|`                `|
+| Input | Value   | Notes |
+| ----- | ------- | ----- |
+| Name  | `OWASP` |       |
 
 4. Click **Apply Changes**
 
 ---
 
 ### Step 3: Run the Pipeline
+
 1. Click **Save** and then **Run** to execute the pipeline
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Branch Name | <pre>`main`</pre>||
-|`                `|`                            `|`                `|
+| Input       | Value  | Notes |
+| ----------- | ------ | ----- |
+| Branch Name | `main` |       |
 
 2. After the **Build and Push** stage is complete, navigate to the **Vulnerabilities** tab to see the deduplicated, normalized, and prioritized list of vulnerabilities discovered across your scanners
 
@@ -202,15 +208,16 @@ In this lab, the security team has implemented orchestration of **Fortify** and 
 | **Policy Enforcement** | Governance policies ensure security scans cannot be skipped. |
 | **Unified View** | All vulnerabilities are deduplicated and prioritized in a single dashboard. |
 
-
 ## Lab 3: Continuous Deploy - Frontend
 
 ## Key Outcomes
+
 - Extend pipelines with deployment stages  
 - Deploy Kubernetes services  
-- Create custom Harness variables  
+- Create custom Harness variables
 
 ## Overview
+
 In this lab, the user extends the existing pipeline to take the artifact built in the CI/Build stage and deploy it to a Kubernetes environment using a rolling deployment strategy.
 
 ---
@@ -218,82 +225,81 @@ In this lab, the user extends the existing pipeline to take the artifact built i
 ## Walkthrough
 
 ### Step 1: Add a Deployment Stage
+
 1. In the existing pipeline, click **Add Stage** and select **Deploy** as the Stage Type
 2. Enter the following values and click **Set Up Stage**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Stage Name | <pre>`frontend`</pre>||
-| Deployment Type | Kubernetes ||
-|`                `|`                            `|`                `|
+| Input           | Value      | Notes |
+| --------------- | ---------- | ----- |
+| Stage Name      | `frontend` |       |
+| Deployment Type | Kubernetes |       |
 
 ---
 
 ### Step 2: Configure Service
+
 1. Click **+ Add Service** and configure as follows:
 
-
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`frontend`</pre>||
-| Deployment Type | Kubernetes ||
-| **Add Manifest** |||
-| Manifest Type | K8s Manifest ||
-| K8s Manifest Store | Code ||
-| Manifest Identifier | <pre>`templates`</pre>||
-| Repository | <pre>`harness-devsecops`</pre>||
-| Branch | <pre>`main`</pre>||
-| File/Folder Path | <pre>`harness-deploy/frontend/manifests`</pre>||
-| Values.yaml | <pre>`harness-deploy/frontend/values.yaml`</pre>||
-| **Add Artifact Source** |||
-| Artifact Repository Type | Docker Registry ||
-| Docker Registry Connector | dockerhub ||
-| Artifact Source Identifier | <pre>`frontend`</pre>||
-| Image Path | <pre>`nikpap/harness-workshop`</pre>||
-| Tag | <pre>`<+variable.username>-<+pipeline.sequenceId>`</pre>| Select value, then click on the pin and select expression and paste the value |
-|`                `|`                            `|`                `|
+| Input                      | Value                                         | Notes                                                                         |
+| -------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------- |
+| Name                       | `frontend`                                    |                                                                               |
+| Deployment Type            | Kubernetes                                    |                                                                               |
+| **Add Manifest**           |                                               |                                                                               |
+| Manifest Type              | K8s Manifest                                  |                                                                               |
+| K8s Manifest Store         | Code                                          |                                                                               |
+| Manifest Identifier        | `templates`                                   |                                                                               |
+| Repository                 | `harness-devsecops`                           |                                                                               |
+| Branch                     | `main`                                        |                                                                               |
+| File/Folder Path           | `harness-deploy/frontend/manifests`           |                                                                               |
+| Values.yaml                | `harness-deploy/frontend/values.yaml`         |                                                                               |
+| **Add Artifact Source**    |                                               |                                                                               |
+| Artifact Repository Type   | Docker Registry                               |                                                                               |
+| Docker Registry Connector  | dockerhub                                     |                                                                               |
+| Artifact Source Identifier | `frontend`                                    |                                                                               |
+| Image Path                 | `nikpap/harness-workshop`                     |                                                                               |
+| Tag                        | `<+variable.username>-<+pipeline.sequenceId>` | Select value, then click on the pin and select expression and paste the value |
 
 2. Click **Save** to close the service window and then click **Continue**
 
 ---
 
 ### Step 3: Configure Environment
+
 The target infrastructure has been pre-created. The application will be deployed to a Kubernetes cluster on the given namespace.
 
 1. Click **- Select -** on the **Specify Environment** input box
 2. Select **prod** environment and click **Apply Selected**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`prod`</pre>| Make sure to select the environment and infrastructure definition |
-|`                `|`                            `|`                `|
+| Input | Value  | Notes                                                             |
+| ----- | ------ | ----------------------------------------------------------------- |
+| Name  | `prod` | Make sure to select the environment and infrastructure definition |
 
 3. Click **- Select -** on the **Specify Infrastructure** input box
 4. From the dropdown select **k8s**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`k8s`</pre>||
-|`                `|`                            `|`                `|
+| Input | Value | Notes |
+| ----- | ----- | ----- |
+| Name  | `k8s` |       |
 
 5. Click **Continue**
 
 ---
 
 ### Step 4: Configure Execution Strategy
+
 1. Select **Rolling** and click **Use Strategy**
 2. The frontend is a static application, so no need for canary deployment
 
 ---
 
 ### Step 5: Save and Run
+
 1. Click **Save** to finalize the deployment stage
 2. Click **Run** to execute the pipeline
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Branch Name | <pre>`main`</pre>||
-|`                `|`                            `|`                `|
+| Input       | Value  | Notes |
+| ----------- | ------ | ----- |
+| Branch Name | `main` |       |
 
 ---
 
@@ -305,14 +311,15 @@ The target infrastructure has been pre-created. The application will be deployed
 | **Kubernetes Native** | Harness provides native Kubernetes support with manifest management. |
 | **Environment Reusability** | Environments and infrastructure can be reused across multiple services. |
 
-
 ## Lab 4: Continuous Deploy - Backend
 
 ## Key Outcomes
+
 - Utilize complex deployment strategies to reduce blast radius  
-- Implement approval gates for production deployments  
+- Implement approval gates for production deployments
 
 ## Overview
+
 In this lab, the user adds a backend deployment stage using a canary deployment strategy with manual approval gates to minimize risk during production releases.
 
 ---
@@ -320,31 +327,32 @@ In this lab, the user adds a backend deployment stage using a canary deployment 
 ## Walkthrough
 
 ### Step 1: Add Backend Deployment Stage
+
 1. In the existing pipeline, click **Add Stage** and select **Deploy** as the Stage Type
 2. Enter the following values and click **Set Up Stage**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Stage Name | <pre>`backend`</pre>||
-| Deployment Type | Kubernetes ||
-|`                `|`                            `|`                `|
+| Input           | Value      | Notes |
+| --------------- | ---------- | ----- |
+| Stage Name      | `backend`  |       |
+| Deployment Type | Kubernetes |       |
 
 ---
 
 ### Step 2: Configure Service
+
 1. Click **- Select -** on the **Select Service** input box
 2. Select **backend**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`backend`</pre>||
-|`                `|`                            `|`                `|
+| Input | Value     | Notes |
+| ----- | --------- | ----- |
+| Name  | `backend` |       |
 
 3. Click **Apply Selected** and then click **Continue**
 
 ---
 
 ### Step 3: Configure Environment
+
 The target infrastructure has been pre-created and was used in the previous stage. To reuse the same environment:
 
 1. Click **- Propagate Environment From**
@@ -354,58 +362,56 @@ The target infrastructure has been pre-created and was used in the previous stag
 ---
 
 ### Step 4: Configure Canary Deployment
+
 1. Select **Canary** and click **Use Strategy**
 2. **After** the canary deployment and **before** the canary delete step, add a **Harness Approval** step
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`Approval`</pre>||
+| Input       | Value             | Notes                                                |
+| ----------- | ----------------- | ---------------------------------------------------- |
+| Name        | `Approval`        |                                                      |
 | User Groups | All Project Users | Select project to see the "All Project Users" option |
-|`                `|`                            `|`                `|
 
 3. Click **Apply Changes**
 
 ---
 
 ### Step 5: Save and Run
+
 1. Click **Save** and then click **Run** to execute the pipeline
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Branch Name | <pre>`main`</pre>||
-|`                `|`                            `|`                `|
+| Input       | Value  | Notes |
+| ----------- | ------ | ----- |
+| Branch Name | `main` |       |
 
 2. While the canary deployment is ongoing and waiting for approval, navigate to the web page and see if you can spot the canary (use the check release button)
 3. From the left hand side menu navigate to project settings
 4. Select **project variables**
-5. The url can exist within the **lab_endpoint** variable 
-<img width="1692" height="302" alt="image" src="https://github.com/user-attachments/assets/5a215845-eadc-479d-9c81-5185bf039243" />
+5. The url can exist within the **lab_endpoint** variable
 
-
+![image](https://github.com/user-attachments/assets/5a215845-eadc-479d-9c81-5185bf039243)
 
 ![](https://lh7-us.googleusercontent.com/docsz/AD_4nXfmb1N3lAe0EOnEun9neU9y3ilqy3HbxfnWfUMzF3FsykslwgQfU_W4pE0wlt5kYSp6_mTs7cVP0anhJ7uvtsytal2qX3ZEq3vvOT3DOBUzE9SZ3rpwkAHP6e_ExdRbo5VmN2kpxdFlp6u8iGaKwhW_uyAohEmJurkjmEB2Ww?key=cRG2cvp_PHVW0KG2Gq6Y_A)
 
 ---
 
 ### Step 6: Replace manual approval with continuous verification
-1. Edit the existing pipeline 
+
+1. Edit the existing pipeline
 2. Select the backend stage and find the **Harness Approval** between the Canary Deploy and Canary Destroy steps
 3. Delete the **Harness Approval** step
-4. **After** the canary deployment and **before** the canary delete step, add a **AI Verify** step 
+4. **After** the canary deployment and **before** the canary delete step, add a **AI Verify** step
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`Verify`</pre>||
-| Continuous Verification Type | Canary ||
-| Duration | 15 min ||
-|`                `|`                            `|`                `|
+| Input                        | Value    | Notes |
+| ---------------------------- | -------- | ----- |
+| Name                         | `Verify` |       |
+| Continuous Verification Type | Canary   |       |
+| Duration                     | 15 min   |       |
 
 5. Click **Save** and then click **Run** to execute the pipeline
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Branch Name | <pre>`main`</pre>||
-|`                `|`                            `|`                `|
+| Input       | Value  | Notes |
+| ----------- | ------ | ----- |
+| Branch Name | `main` |       |
 
 ---
 
@@ -417,14 +423,15 @@ The target infrastructure has been pre-created and was used in the previous stag
 | **Manual Gates** | Approval steps ensure human oversight for critical deployments. |
 | **Environment Propagation** | Reusing environments across stages reduces configuration duplication. |
 
-
 ## Lab 5: Validate Release
 
 ## Key Outcomes
+
 - Identify traffic differences between normal and canary instances  
-- Automate release validation  
+- Automate release validation
 
 ## Overview
+
 In this lab, the user validates canary deployments by observing traffic distribution and monitoring application behavior during progressive rollouts.
 
 ---
@@ -432,12 +439,13 @@ In this lab, the user validates canary deployments by observing traffic distribu
 ## Walkthrough
 
 ### Step 1: Observe Canary Traffic
-1. While the canary deployment is ongoing, navigate to the web page
 
-3. From the left hand side menu navigate to project settings
-4. Select **project variables**
-5. The url can exist within the **lab_endpoint** variable 
-<img width="1692" height="302" alt="image" src="https://github.com/user-attachments/assets/5a215845-eadc-479d-9c81-5185bf039243" />
+1. While the canary deployment is ongoing, navigate to the web page
+2. From the left hand side menu navigate to project settings
+3. Select **project variables**
+4. The url can exist within the **lab_endpoint** variable
+
+![image](https://github.com/user-attachments/assets/5a215845-eadc-479d-9c81-5185bf039243)
 
 6. Drill down to the **Distribution Test** tab
 7. Click the **Start** button to run traffic generation
@@ -446,6 +454,7 @@ In this lab, the user validates canary deployments by observing traffic distribu
 ---
 
 ### Step 2: Validate Pipeline Execution
+
 1. Return to the pipeline execution in Harness
 2. Validate the outcome of the verification step
 3. Observe how Harness automatically evaluates metrics during the canary phase
@@ -456,6 +465,7 @@ In this lab, the user validates canary deployments by observing traffic distribu
 ---
 
 ### Bonus Activities
+
 - If verification fails, Harness defaults to manual intervention. Decide what happens next (rollback, ignore, etc.)
 - Add a canary rollout from 10% to 50% traffic and observe how this impacts traffic distribution
 
@@ -471,11 +481,13 @@ In this lab, the user validates canary deployments by observing traffic distribu
 ## Lab 6: Governance / Policy as Code
 
 ## Key Outcomes
+
 - Create policies that evaluate when editing pipelines  
 - Create policies that evaluate during pipeline execution  
-- Test policy enforcement  
+- Test policy enforcement
 
 ## Overview
+
 In this lab, the user creates and applies policies as code to enable governance and promote self-service. Policies ensure that critical steps like approvals are always included in production pipelines.
 
 ---
@@ -483,21 +495,20 @@ In this lab, the user creates and applies policies as code to enable governance 
 ## Walkthrough
 
 ### Step 1: Create a Policy to Require Approvals
+
 1. From the secondary menu, select **Project Settings**
 2. Under Security & Governance Select **Policies**
 3. Click **New Policy**
 4. Enter new policy name
-6. Click Apply
-7. From the suggested list , select **Pipeline - Approval** and click **Use This Sample**
-8. Click **Save**
+5. Click Apply
+6. From the suggested list , select **Pipeline - Approval** and click **Use This Sample**
+7. Click **Save**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Policy Name | <pre>`Production Approvals`</pre> ||
-|`                `|`                            `|`                `|
+| Input       | Value                  | Notes |
+| ----------- | ---------------------- | ----- |
+| Policy Name | `Production Approvals` |       |
 
-
-10. Click **Policy Sets** 
+10. Click **Policy Sets**
 11. Click **New Policy Set**
 12. Click **Continue**
 13. Click **+Add Policy**
@@ -508,17 +519,18 @@ In this lab, the user creates and applies policies as code to enable governance 
 18. Toggle **enabled** for the **
 
 Set the values according to the table below and confirm
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Policy Set Name | <pre>`Production Policies`</pre> ||
-| Entity Type | Pipeline ||
-| Trigger Event | On Run ||
-| Failure Strategy | Error & exit ||
-|`                `|`                            `|`                `|
+
+| Input            | Value                 | Notes |
+| ---------------- | --------------------- | ----- |
+| Policy Set Name  | `Production Policies` |       |
+| Entity Type      | Pipeline              |       |
+| Trigger Event    | On Run                |       |
+| Failure Strategy | Error & exit          |       |
 
 ---
 
 ### Step 2: Test the Policy
+
 1. Open your pipeline
 2. Try to run the pipeline and note the failure due to lack of an approval stage
 3. Click **Save** and note the failure due to lack of an approval stage
@@ -526,20 +538,22 @@ Set the values according to the table below and confirm
 ---
 
 ### Step 3: Add Approval Steps to Satisfy Policy
+
 **Frontend Stage**
+
 1. Open the pipeline in edit mode and navigate to the **frontend** stage
 2. Before the rolling deployment step, add a **Harness Approval** step
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Step Name | <pre>`Approval`</pre>||
-| Type of Approval | Harness Approval ||
-| User Groups | All Project Users ||
-|`                `|`                            `|`                `|
+| Input            | Value             | Notes |
+| ---------------- | ----------------- | ----- |
+| Step Name        | `Approval`        |       |
+| Type of Approval | Harness Approval  |       |
+| User Groups      | All Project Users |       |
 
 3. Click **Apply Changes**
 
 **Backend Stage**
+
 1. Navigate to the **backend** stage
 2. Before the canary deployment block, add a **Harness Approval** step with the same configuration
 3. Click **Save** and note that the save succeeds without any policy failure
@@ -554,14 +568,15 @@ Set the values according to the table below and confirm
 | **Policy-as-Code** | Governance is defined in code and version-controlled—just like everything else. |
 | **Scalable Compliance** | Teams can move fast while meeting security and audit requirements at scale. |
 
-
 ## Lab 7: Governance / Policy as Code (Advanced)
 
 ## Key Outcomes
+
 - Block critical CVEs from reaching production  
-- Enforce security policies during runtime  
+- Enforce security policies during runtime
 
 ## Overview
+
 In this lab, the user creates an advanced policy that blocks deployments when critical vulnerabilities are detected by security scanners like OWASP.
 
 ---
@@ -569,15 +584,15 @@ In this lab, the user creates an advanced policy that blocks deployments when cr
 ## Walkthrough
 
 ### Step 1: Create a Policy to Block Critical CVEs
+
 1. From the secondary menu, select **Project Settings**
 2. Select **Policies**
 3. Click the **Policies** tab
 4. Click **+ New Policy**
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`Runtime OWASP CVEs`</pre>||
-|`                `|`                            `|`                `|
+| Input | Value                | Notes |
+| ----- | -------------------- | ----- |
+| Name  | `Runtime OWASP CVEs` |       |
 
 5. Click **Apply**
 6. Set the REGO policy to the following and click **Save**
@@ -592,16 +607,16 @@ deny[sprintf("Node OSS Can't contain any critical vulnerability '%d'", [input.NO
 ---
 
 ### Step 2: Create a Policy Set
+
 1. Select the **Policy Sets** tab
 2. Click **+ New Policy Set** and configure as follows:
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`Criticals Not Allowed`</pre>||
-| Entity Type | Custom ||
-| Event Evaluation | On Step ||
-| Policy to Evaluate | Runtime OWASP CVEs ||
-|`                `|`                            `|`                `|
+| Input              | Value                   | Notes |
+| ------------------ | ----------------------- | ----- |
+| Name               | `Criticals Not Allowed` |       |
+| Entity Type        | Custom                  |       |
+| Event Evaluation   | On Step                 |       |
+| Policy to Evaluate | Runtime OWASP CVEs      |       |
 
 3. Click **Apply**
 4. Click **Finish**
@@ -610,6 +625,7 @@ deny[sprintf("Node OSS Can't contain any critical vulnerability '%d'", [input.NO
 ---
 
 ### Step 3: Add Policy to Pipeline
+
 1. Open your pipeline
 2. Go to a previous execution and copy the **CRITICAL** output variable from the OWASP step like so:
 
@@ -618,19 +634,19 @@ deny[sprintf("Node OSS Can't contain any critical vulnerability '%d'", [input.NO
 3. Select the **frontend** stage
 4. Before the **Rollout Deployment** Step Group, add a **Policy** type step
 
-| Input      | Value     | Notes |
-| ---------- | ----------------------  | ----- |
-| Name | <pre>`Policy - No Critical CVEs`</pre>||
-| Entity Type | Custom ||
-| Policy Set | Criticals Not Allowed | Make sure to select the Project tab |
-| Payload | <pre>`{"NODE_OSS_CRITICAL_COUNT": <variable>}`</pre>| Set the field type to Expression, then replace `<variable>` with the OWASP output variable CRITICAL path |
-|`                `|`                            `|`                `|
+| Input       | Value                           | Notes                                                                                                    |
+| ----------- | ------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Name        | `Policy - No Critical CVEs`     |                                                                                                          |
+| Entity Type | Custom                          |                                                                                                          |
+| Policy Set  | Criticals Not Allowed           | Make sure to select the Project tab                                                                      |
+| Payload     | `{"NODE_OSS_CRITICAL_COUNT": }` | Set the field type to Expression, then replace `<variable>` with the OWASP output variable CRITICAL path |
 
 5. Click **Apply Changes**
 
 ---
 
 ### Step 4: Test the Policy
+
 1. Save the pipeline and execute
 2. Note that the pipeline fails at the policy evaluation step due to critical vulnerabilities being found by OWASP
 
