@@ -1,18 +1,17 @@
-# Lab 1: Build
+# Lab 1 - Continuous Integration - Build
 
-## Key Outcomes
+## Summary
+Setup a CI Pipeline, including running source code tests, building the executable, and building and pushing the artifact to Harness Artifact Registry.
 
-- Configure a basic CI pipeline
-- Run unit tests to validate code
-- Build and push artifacts to a remote repository
+## Objectives:
+- Understand how to configure a basic pipeline using Harness CI
+- Review how to build and deploy an artifact to an artifact repository using Harness CI
+- Understand how unit tests are integrated into the build process using Harness CI
 
-## Overview
+## Why It Matters:
+This lab establishes the starting point of the software delivery lifecycle and ensures artifacts entering the deployment process are consistent, repeatable, and traceable. While CI is not the focus of this POC, this lab validates that Harness cleanly integrates with existing CI workflows and produces deployable artifacts that downstream CD and Artifact Registry processes can rely on.
 
-In this lab, you set up a CI pipeline that runs source code tests, builds the executable, and pushes the artifact to a remote Docker repository. This establishes the foundation for a deployable artifact that can be promoted through environments.
-
----
-
-## Walkthrough
+## Steps
 
 ### Step 1: Create a Pipeline
 
@@ -26,7 +25,7 @@ In this lab, you set up a CI pipeline that runs source code tests, builds the ex
 
    | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
    | --------------------- | ---------- | ------------------------------------------------------------------------------------------ |
-   | Name                  | <pre>workshop</pre>                                                                                   |
+   | Name                  | <pre>workshop</pre>      |
    | How do you want to setup your pipeline | Inline     | This indicates that Harness (rather than Git) will be the source of truth for the pipeline |
 
 ---
@@ -89,10 +88,10 @@ Navigate to the **Execution** tab and add the following steps:
 
    | Input                      | Value                                             | Notes                                                                    |
    | -------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
-   | Name                       | <pre>Push to DockerHub</pre>                               |                                                                          |
-   | Registry Type              | Third Party Artifact Registry                     |                                                                          |
-   | Docker Connector           | dockerhub                                         |                                                                          |
-   | Docker Repository          | <pre>nikpap/harness-workshop</pre>                         |                                                                          |
+   | Name                       | <pre>Push to Harness AR</pre>                               |                                                                          |
+   | Registry Type              | Artifact Registry                     |                                                                          |
+   | Registry | containers | Click the registry selector, then click **New Registry**, set the name to **containers** and click **Create Registry** |
+   | Package Name | <pre>workshop-app</pre> | |
    | Tags                       | <pre><+variable.username>-<+pipeline.sequenceId></pre>     | Click the +Add button under tags and then fill in with the value         |
    | **Optional Configuration** |                                                   |                                                                          |
    | Dockerfile                 | <pre>/harness/frontend-app/harness-webapp/Dockerfile</pre> | This tells Harness where the Dockerfile is for building the app          |
@@ -111,9 +110,10 @@ Navigate to the **Execution** tab and add the following steps:
    | ----------- | ------ | ------------ |
    | Branch Name | `main` | Prepopulated |
 
-> [!WARNING]
-> Pipeline execution is rejected by the policy engine. Create a compliant pipeline in [Lab 2: DevSecOps](lab-2-devsecops.md).
+3. Wait for the pipeline to finish
+4. From the left-hand side menu, hover over **Artifact Registry** and click on **Registries**
+5. Select the **containers** registry and inspect the package that was just built and pushed to the registry 
 
 ---
 
-**Previous:** [Pre-Read](../README.md#lab-pre-read) · **Next:** [Lab 2: DevSecOps](lab-2-devsecops.md)
+**Previous:** [Pre-Read](../README.md#lab-pre-read) · **Next:** [Lab 2 - Continuous Deployment - Frontend](lab-2-continuous-deploy-frontend.md)

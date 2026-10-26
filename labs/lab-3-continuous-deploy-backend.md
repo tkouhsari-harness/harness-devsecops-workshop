@@ -1,17 +1,16 @@
-# Lab 4: Continuous Deploy - Backend
+# Lab 3 - Continuous Deployment - Backend
 
-## Key Outcomes
+## Summary
+Frontend is done. Now for the backend, where things can actually break in expensive ways. Let's use a canary deployment strategy with a manual approval before a broad rollout in order to minimize the blast radius. Deploy to a small slice of traffic, verify the canary is healthy, then promote to everyone. Progressive delivery made easy. 
 
-- Utilize complex deployment strategies to reduce blast radius
-- Implement approval gates for production deployments
+## Objectives
+- Extend the pipeline with multiple deployment stages for different services
+- Implement advanced deployment strategies to reduce blast radius of a release
+- Add manual approval gates and keep the human in the loop for controlled production releases
 
-## Overview
-
-In this lab, you add a backend deployment stage using a canary deployment strategy with manual approval gates to minimize risk during production releases.
-
----
-
-## Walkthrough
+## Why It Matters
+This lab validates Harness’s ability to safely deploy changes to production using advanced deployment strategies. Participants experience how risk is reduced through progressive delivery and manual validation — without complex scripting.
+## Steps
 
 ### Step 1: Add Backend Deployment Stage
 
@@ -89,4 +88,4 @@ While the canary deployment is ongoing and waiting for approval, navigate to the
 
 ---
 
-**Previous:** [Lab 3: Continuous Deploy - Frontend](lab-3-continuous-deploy-frontend.md) · **Next:** [Lab 5: Validate Release](lab-5-validate-release.md)
+**Previous:** [Lab 2 - Continuous Deployment - Frontend](lab-2-continuous-deploy-frontend.md) · **Next:** [Lab 4 - Artifact Registry](lab-4-artifact-registry.md)
