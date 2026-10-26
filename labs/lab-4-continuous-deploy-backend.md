@@ -43,7 +43,7 @@ In this lab, you add a backend deployment stage using a canary deployment strate
 The target infrastructure has been pre-created and was used in the previous stage. To reuse the same environment:
 
 1. Click **- Propagate Environment From**
-2. Select **Stage [frontend]**
+2. Select **Stage [Deploy Frontend]**
 3. Click **Continue**
 
 ---
@@ -55,7 +55,8 @@ The target infrastructure has been pre-created and was used in the previous stag
 
    | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
    | --------------- | ---------- | ----- |
-   | Name        | <pre>Approval</pre>       |                                                      |
+   | Name        | <pre>Approval</pre>       |          |
+   | Message     | <pre>Please check the application at <+variable.lab_endpoint></pre>| |
    | User Groups | All Project Users | Select project to see the "All Project Users" option |
 
 3. Click **Apply Changes**
@@ -72,12 +73,9 @@ The target infrastructure has been pre-created and was used in the previous stag
 
 While the canary deployment is ongoing and waiting for approval, navigate to the web page and see if you can spot the canary
 
-1. From the left-hand side menu, hover over **Project Settings** and select **Variables** (top of second column)
-2. Copy the URL from the **lab_endpoint** variable
-   ![image](https://github.com/user-attachments/assets/5a215845-eadc-479d-9c81-5185bf039243)
-3. Go to the URL and click the **Check Release** button
-
-   ![](https://lh7-us.googleusercontent.com/docsz/AD_4nXfmb1N3lAe0EOnEun9neU9y3ilqy3HbxfnWfUMzF3FsykslwgQfU_W4pE0wlt5kYSp6_mTs7cVP0anhJ7uvtsytal2qX3ZEq3vvOT3DOBUzE9SZ3rpwkAHP6e_ExdRbo5VmN2kpxdFlp6u8iGaKwhW_uyAohEmJurkjmEB2Ww?key=cRG2cvp_PHVW0KG2Gq6Y_A)
+1. Click on the **Approval** step
+2. In the step details, click on the link next to the **Approve or Reject** button
+3. In the app, click on the **Check Release** button
 
 ---
 

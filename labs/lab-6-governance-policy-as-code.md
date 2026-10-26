@@ -51,7 +51,7 @@ In this lab, you create and apply policies as code to enable governance and prom
 ### Step 3: Test the Policy
 
 1. Go to your pipeline and click **Run** to execute it
-2. Note the failure due to lack of an approval stage
+2. Note the failure due to lack of an approval step
 
 ---
 
