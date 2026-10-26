@@ -41,10 +41,10 @@ In this lab, the user sets up a CI pipeline that runs source code tests, builds 
 1. In the Harness UI, from the left-hand menu, navigate to **Projects** and select your assigned project
 2. Use the **Changing Harness Module** pre-read instruction to enable the **unified view**
 
-    ![](https://lh7-us.googleusercontent.com/docsz/AD_4nXfhuMykMsIHl-7FjliWssHc0uwRpdLdrnq7GkGAI0g6UBZM69F1zpQ8ZA8N_vMqjpoGFYFR_weJk7OtOGGa2bksIaS6BlktwytmuJ1THM3e8O6tDT18HYWwFyGUye8ubsrHBChI8ORrCQ88JcKWpLjQ0DsXDS0NSZrkfZ4RUQ?key=cRG2cvp_PHVW0KG2Gq6Y_A)
+   <img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXfhuMykMsIHl-7FjliWssHc0uwRpdLdrnq7GkGAI0g6UBZM69F1zpQ8ZA8N_vMqjpoGFYFR_weJk7OtOGGa2bksIaS6BlktwytmuJ1THM3e8O6tDT18HYWwFyGUye8ubsrHBChI8ORrCQ88JcKWpLjQ0DsXDS0NSZrkfZ4RUQ?key=cRG2cvp_PHVW0KG2Gq6Y_A" width="50%">
 
-2. From the left-hand side menu, select **Pipelines**
-3. Click **+ Create a Pipeline**, enter the following values, then click **Start**
+3. From the left-hand side menu, select **Pipelines**
+4. Click **+ Create a Pipeline**, enter the following values, then click **Start**
 
    | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
    | --------------------- | ---------- | ------------------------------------------------------------------------------------------ |
@@ -238,24 +238,24 @@ In this lab, the user extends the existing pipeline to take the artifact built i
 
 1. Click **+ Add Service** and configure as follows:
 
-   | Input                      | Value                                         | Notes                                                                         |
-   | -------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------- |
-   | Name                       | <pre>frontend</pre>                                    |                                                                               |
-   | Deployment Type            | Kubernetes                                    |                                                                               |
-   | **Add Manifest**           |                                               |                                                                               |
-   | Manifest Type              | K8s Manifest                                  |                                                                               |
-   | K8s Manifest Store         | Code                                          |                                                                               |
-   | Manifest Identifier        | <pre>templates</pre>                                   |                                                                               |
-   | Repository                 | <pre>harness-devsecops</pre>                           |                                                                               |
-   | Branch                     | <pre>main</pre>                                        |                                                                               |
-   | File/Folder Path           | <pre>harness-deploy/frontend/manifests</pre>           |                                                                               |
-   | Values.yaml                | <pre>harness-deploy/frontend/values.yaml</pre>         |                                                                               |
-   | **Add Artifact Source**    |                                               |                                                                               |
-   | Artifact Repository Type   | Docker Registry                               |                                                                               |
-   | Docker Registry Connector  | dockerhub                                     |                                                                               |
-   | Artifact Source Identifier | </pre>`frontend</pre>                                    |                                                                               |
-   | Image Path                 | </pre>`nikpap/harness-workshop</pre>                     |                                                                               |
-   | Tag                        | </pre>`<+variable.username>-<+pipeline.sequenceId></pre> | Select value, then click on the pin and select expression and paste the value |
+   | Input                      | Value                                         | Notes                                                                        |
+   | -------------------------- | --------------------------------------------- | ---------------------------------------------------------------------------- |
+   | Name                       | <pre>frontend</pre>                           |                                |
+   | Deployment Type            | Kubernetes                                    |                                |
+   | **Add Manifest**           |                                               |                                |
+   | Manifest Type              | K8s Manifest                                  |                                |
+   | K8s Manifest Store         | Code                                          |                                |
+   | Manifest Identifier        | <pre>templates</pre>                          |                                |
+   | Repository                 | <pre>harness-devsecops</pre>                  |                                |
+   | Branch                     | <pre>main</pre>                               |                                |
+   | File/Folder Path           | <pre>harness-deploy/frontend/manifests</pre>  |                                |
+   | Values.yaml                | <pre>harness-deploy/frontend/values.yaml</pre>|                                |
+   | **Add Artifact Source**    |                                               |                                |
+   | Artifact Repository Type   | Docker Registry                               |                                |
+   | Docker Registry Connector  | dockerhub                                     |                                |
+   | Artifact Source Identifier | <pre>frontend</pre>                           |                                |
+   | Image Path                 | <pre>nikpap/harness-workshop</pre>            |                                |
+   | Tag                        | <pre><+variable.username>-<+pipeline.sequenceId></pre> | Select value, then click on the pin and select expression and paste the value |
 
 2. Click **Save** to close the service window and then click **Continue**
 
@@ -364,8 +364,8 @@ The target infrastructure has been pre-created and was used in the previous stag
 1. Select **Canary** and click **Use Strategy**
 2. **After** the canary deployment and **before** the canary delete step, add a **Harness Approval** step
 
-   | Input       | Value             | Notes                                                |
-   | ----------- | ----------------- | ---------------------------------------------------- |
+   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
+   | --------------- | ---------- | ----- |
    | Name        | <pre>Approval</pre>       |                                                      |
    | User Groups | All Project Users | Select project to see the "All Project Users" option |
 
@@ -425,7 +425,7 @@ In this lab, the user validates canary deployments by observing traffic distribu
 
    | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
    | ---------------------------- | -------- | ----- |
-   | Name                         | <pre>AI Verify<pre> |       |
+   | Name                         | <pre>AI Verify</pre> |       |
    | Continuous Verification Type | Canary   |       |
    | Duration                     | 10 min   |       |
 
@@ -453,8 +453,8 @@ In this lab, the user validates canary deployments by observing traffic distribu
 
 Harness automatically evaluates metrics during the canary phase to determine if the application is healthy
 
-![](https://lh7-us.googleusercontent.com/docsz/AD_4nXdbAmEJ5zQPsKlw_nEknWvYo97pm5eWCXr6vU8-GgIL0ulAOSH9N07PoEcVSknARVQo7Tgj1s31VHqR1I3hu2dMIO1rIX5HHcmTPXoQPoyo8CPv13OhnJN5WVcZqSwUXzdDHmm3PxUnhtpGVl0PAMJ_1wnuodvUbVPBOdnGKQ?key=cRG2cvp_PHVW0KG2Gq6Y_A)
-![](https://lh7-us.googleusercontent.com/docsz/AD_4nXf-5oWX9OfvdmEb9MBm2_h2KKAa_QwmiJoM0fiKrTuxAr6GR4wxeulSlk48gyBK3dykrtIslDSkxpiGytrxH0JaxaQ4ZgTYxbmc8OenAH3nhGCvvOAxkWVjVBp1TRg_qQQi9z8OrNPK4udPtNL1LIyym6Ch5IMzrulFOcXhOQ?key=cRG2cvp_PHVW0KG2Gq6Y_A)
+<img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXdbAmEJ5zQPsKlw_nEknWvYo97pm5eWCXr6vU8-GgIL0ulAOSH9N07PoEcVSknARVQo7Tgj1s31VHqR1I3hu2dMIO1rIX5HHcmTPXoQPoyo8CPv13OhnJN5WVcZqSwUXzdDHmm3PxUnhtpGVl0PAMJ_1wnuodvUbVPBOdnGKQ?key=cRG2cvp_PHVW0KG2Gq6Y_A" width="50%">
+<img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXf-5oWX9OfvdmEb9MBm2_h2KKAa_QwmiJoM0fiKrTuxAr6GR4wxeulSlk48gyBK3dykrtIslDSkxpiGytrxH0JaxaQ4ZgTYxbmc8OenAH3nhGCvvOAxkWVjVBp1TRg_qQQi9z8OrNPK4udPtNL1LIyym6Ch5IMzrulFOcXhOQ?key=cRG2cvp_PHVW0KG2Gq6Y_A" width="50%">
 
 ---
 
@@ -535,10 +535,10 @@ In this lab, the user creates and applies policies as code to enable governance 
 2. Hover the mouse before the **Rollout Deployment** step and click the **+** icon to add a new step
 3. Click **Add Step** and select the **Harness Approval** step from the step library
 
-   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |   | ---------------- | ----------------- | ----- |
-   | Step Name        | <pre>Approval</pre>        |       |
-   | Type of Approval | Harness Approval  |       |
-   | User Groups      | All Project Users |       |
+   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
+   | --------------- | ---------- | ----- |
+   | Name        | <pre>Approval</pre>       |                                                      |
+   | User Groups | All Project Users | Select project to see the "All Project Users" option |
 
 3. Click **Apply Changes**
 
@@ -548,10 +548,10 @@ In this lab, the user creates and applies policies as code to enable governance 
 2. Hover the mouse before the **Canary Deployment** STEP GROUP and click the **+** icon to add a new step
 3. Click **Add Step** and select the **Harness Approval** step from the step library
 
-   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |   | ---------------- | ----------------- | ----- |
-   | Step Name        | <pre>Approval</pre>        |       |
-   | Type of Approval | Harness Approval  |       |
-   | User Groups      | All Project Users |       |
+   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
+   | --------------- | ---------- | ----- |
+   | Name        | <pre>Approval</pre>       |                                                      |
+   | User Groups | All Project Users | Select project to see the "All Project Users" option |
 
 ### Step 5: Test the Policy
 
@@ -589,7 +589,8 @@ In this lab, the user creates an advanced policy that blocks deployments when cr
 2. Click on the **Policies** tab
 3. Click **+ New Policy**, enter the following values, then click **Apply**
 
-   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |   | ----------- | ---------------------- | ----- |
+   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
+   | --------------- | ---------- | ----- |
    | Policy Name | <pre>Critical OWASP CVEs</pre> |       |
 
 4. Enter the following REGO policy and click **Save**
@@ -606,7 +607,8 @@ In this lab, the user creates an advanced policy that blocks deployments when cr
 1. Click the **Policy Sets** tab
 2. Click **+ New Policy Set**, enter the following values, then click **Continue**
 
-   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |   | ---------------- | --------------------- | ----- |
+   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
+   | --------------- | ---------- | ----- |
    | Policy Set Name  | <pre>Security Policies</pre> |       |
    | Entity Type that this policy set applies to      | Custom              |       |
    | On what event should the policy set be evaluated    | On Step                |       |
@@ -631,7 +633,7 @@ In this lab, the user creates an advanced policy that blocks deployments when cr
 4. Click **Add Step** and select the **Policy** step from the step library
 
    | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
-   | ----------- | ------------------------------- | -------------------------------------------------------------------------------------------------------- |
+   | --------------- | ---------- | ----- |
    | Name        | <pre>Policy - No Critical CVEs</pre>     |                                                                                                          |
    | Entity Type | Custom                          |                                                                                                          |
    | Policy Set  | Criticals Not Allowed           | Make sure to select the Project tab                                                                      |
