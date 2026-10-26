@@ -7,7 +7,7 @@
 
 ## Overview
 
-In this lab, the user adds a backend deployment stage using a canary deployment strategy with manual approval gates to minimize risk during production releases.
+In this lab, you add a backend deployment stage using a canary deployment strategy with manual approval gates to minimize risk during production releases.
 
 ---
 

@@ -56,7 +56,7 @@ In this lab, the security team has implemented orchestration of **Fortify** and 
    | ----------- | ------ | ----- |
    | Branch Name | `main` |       |
 
-2. After the **Build and Push** stage is complete, navigate to the **Vulnerabilities** tab to see the deduplicated, normalized, and prioritized list of vulnerabilities discovered across your scanners
+2. After the **Build** stage is complete, navigate to the **Vulnerabilities** tab to see the deduplicated, normalized, and prioritized list of vulnerabilities discovered across your scanners
 
 ---
 

@@ -7,7 +7,7 @@
 
 ## Overview
 
-In this lab, the user validates canary deployments by observing traffic distribution and monitoring application behavior during progressive rollouts.
+In this lab, you validate canary deployments by observing traffic distribution and monitoring application behavior during progressive rollouts.
 
 ---
 
@@ -39,6 +39,8 @@ In this lab, the user validates canary deployments by observing traffic distribu
 2. Under **Distribution Test**, click the **Start** button
 3. Click the play button to run traffic generation
 4. Click the refresh button to see the distribution of traffic hitting the canary pod
+   <img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXdbAmEJ5zQPsKlw_nEknWvYo97pm5eWCXr6vU8-GgIL0ulAOSH9N07PoEcVSknARVQo7Tgj1s31VHqR1I3hu2dMIO1rIX5HHcmTPXoQPoyo8CPv13OhnJN5WVcZqSwUXzdDHmm3PxUnhtpGVl0PAMJ_1wnuodvUbVPBOdnGKQ?key=cRG2cvp_PHVW0KG2Gq6Y_A" width="50%">
+   <img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXf-5oWX9OfvdmEb9MBm2_h2KKAa_QwmiJoM0fiKrTuxAr6GR4wxeulSlk48gyBK3dykrtIslDSkxpiGytrxH0JaxaQ4ZgTYxbmc8OenAH3nhGCvvOAxkWVjVBp1TRg_qQQi9z8OrNPK4udPtNL1LIyym6Ch5IMzrulFOcXhOQ?key=cRG2cvp_PHVW0KG2Gq6Y_A" width="50%">
 
 ---
 
@@ -49,8 +51,6 @@ In this lab, the user validates canary deployments by observing traffic distribu
 
 Harness automatically evaluates metrics during the canary phase to determine if the application is healthy
 
-<img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXdbAmEJ5zQPsKlw_nEknWvYo97pm5eWCXr6vU8-GgIL0ulAOSH9N07PoEcVSknARVQo7Tgj1s31VHqR1I3hu2dMIO1rIX5HHcmTPXoQPoyo8CPv13OhnJN5WVcZqSwUXzdDHmm3PxUnhtpGVl0PAMJ_1wnuodvUbVPBOdnGKQ?key=cRG2cvp_PHVW0KG2Gq6Y_A" width="50%">
-<img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXf-5oWX9OfvdmEb9MBm2_h2KKAa_QwmiJoM0fiKrTuxAr6GR4wxeulSlk48gyBK3dykrtIslDSkxpiGytrxH0JaxaQ4ZgTYxbmc8OenAH3nhGCvvOAxkWVjVBp1TRg_qQQi9z8OrNPK4udPtNL1LIyym6Ch5IMzrulFOcXhOQ?key=cRG2cvp_PHVW0KG2Gq6Y_A" width="50%">
 
 ---
 
@@ -65,7 +65,7 @@ Harness automatically evaluates metrics during the canary phase to determine if 
 
 | Aspect | Description |
 | :--- | :--- |
-| **Automated Validation** | Harness validates deployments automatically, reducing manual testing. |
+| **Automated Validation** | Harness validates deployments automatically, eliminating manual post-deployment monitoring. |
 | **Traffic Shaping** | Canary deployments allow controlled traffic distribution for risk mitigation. |
 
 ---

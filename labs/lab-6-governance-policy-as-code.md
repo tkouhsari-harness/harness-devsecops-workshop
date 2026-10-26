@@ -8,7 +8,7 @@
 
 ## Overview
 
-In this lab, the user creates and applies policies as code to enable governance and promote self-service. Policies ensure that critical steps like approvals are always included in production pipelines.
+In this lab, you create and apply policies as code to enable governance and promote self-service. Policies ensure that critical steps like approvals are always included in production pipelines.
 
 ---
 
@@ -87,7 +87,7 @@ In this lab, the user creates and applies policies as code to enable governance 
 
 ### Step 5: Test the Policy
 
-1. Click **Run** to execute your pipeline
+1. Click **Save** to save, then click **Run** to execute your pipeline
 2. Note that the pipeline satisfies the policy and executes
 
 ---

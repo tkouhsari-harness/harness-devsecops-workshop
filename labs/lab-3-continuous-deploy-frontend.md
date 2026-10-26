@@ -4,11 +4,11 @@
 
 - Extend pipelines with deployment stages
 - Deploy Kubernetes services
-- Create custom Harness variables
+- Use Harness variables
 
 ## Overview
 
-In this lab, the user extends the existing pipeline to take the artifact built in the CI/Build stage and deploy it to a Kubernetes environment using a rolling deployment strategy.
+In this lab, you extend the existing pipeline to take the artifact built in the CI/Build stage and deploy it to a Kubernetes environment using a rolling deployment strategy.
 
 ---
 

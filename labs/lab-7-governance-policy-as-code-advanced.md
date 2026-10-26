@@ -7,7 +7,7 @@
 
 ## Overview
 
-In this lab, the user creates an advanced policy that blocks deployments when critical vulnerabilities are detected by security scanners like OWASP.
+In this lab, you create an advanced policy that blocks deployments when critical vulnerabilities are detected by security scanners like OWASP.
 
 ---
 
