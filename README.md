@@ -535,9 +535,8 @@ In this lab, the user creates and applies policies as code to enable governance 
 2. Hover the mouse before the **Rollout Deployment** step and click the **+** icon to add a new step
 3. Click **Add Step** and select the **Harness Approval** step from the step library
 
-   | Input            | Value             | Notes |
-   | ---------------- | ----------------- | ----- |
-   | Step Name        | `Approval`        |       |
+   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |   | ---------------- | ----------------- | ----- |
+   | Step Name        | <pre>Approval</pre>        |       |
    | Type of Approval | Harness Approval  |       |
    | User Groups      | All Project Users |       |
 
@@ -549,9 +548,8 @@ In this lab, the user creates and applies policies as code to enable governance 
 2. Hover the mouse before the **Canary Deployment** STEP GROUP and click the **+** icon to add a new step
 3. Click **Add Step** and select the **Harness Approval** step from the step library
 
-   | Input            | Value             | Notes |
-   | ---------------- | ----------------- | ----- |
-   | Step Name        | `Approval`        |       |
+   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |   | ---------------- | ----------------- | ----- |
+   | Step Name        | <pre>Approval</pre>        |       |
    | Type of Approval | Harness Approval  |       |
    | User Groups      | All Project Users |       |
 
@@ -587,61 +585,57 @@ In this lab, the user creates an advanced policy that blocks deployments when cr
 
 ### Step 1: Create a Policy to Block Critical CVEs
 
-1. From the secondary menu, select **Project Settings**
-2. Select **Policies**
-3. Click the **Policies** tab
-4. Click **+ New Policy**
+1. From the left-hand side menu, hover over **Project Settings** and select **Policies** (towards the bottom of the 3rd column)
+2. Click on the **Policies** tab
+3. Click **+ New Policy**, enter the following values, then click **Apply**
 
-| Input | Value                | Notes |
-| ----- | -------------------- | ----- |
-| Name  | `Runtime OWASP CVEs` |       |
+   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |   | ----------- | ---------------------- | ----- |
+   | Policy Name | <pre>Critical OWASP CVEs</pre> |       |
 
-5. Click **Apply**
-6. Set the REGO policy to the following and click **Save**
+4. Enter the following REGO policy and click **Save**
 
-```opa
-package pipeline_environment
-deny[sprintf("Node OSS Can't contain any critical vulnerability '%d'", [input.NODE_OSS_CRITICAL_COUNT])] {  
-   input.NODE_OSS_CRITICAL_COUNT != 0
-}
-```
-
----
+   ```opa
+   package pipeline_environment
+   deny[sprintf("Node OSS Can't contain any critical vulnerability '%d'", [input.NODE_OSS_CRITICAL_COUNT])] {  
+      input.NODE_OSS_CRITICAL_COUNT != 0
+   }
+   ```
 
 ### Step 2: Create a Policy Set
 
-1. Select the **Policy Sets** tab
-2. Click **+ New Policy Set** and configure as follows:
+1. Click the **Policy Sets** tab
+2. Click **+ New Policy Set**, enter the following values, then click **Continue**
 
-| Input              | Value                   | Notes |
-| ------------------ | ----------------------- | ----- |
-| Name               | `Criticals Not Allowed` |       |
-| Entity Type        | Custom                  |       |
-| Event Evaluation   | On Step                 |       |
-| Policy to Evaluate | Runtime OWASP CVEs      |       |
+   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |   | ---------------- | --------------------- | ----- |
+   | Policy Set Name  | <pre>Security Policies</pre> |       |
+   | Entity Type that this policy set applies to      | Custom              |       |
+   | On what event should the policy set be evaluated    | On Step                |       |
 
-3. Click **Apply**
-4. Click **Finish**
-5. Toggle the **Enforced** button
+4. Click **+ Add Policy**
+5. Select **Critical OWASP CVEs**
+6. Select **Error & Exit** for failure strategy
+7. Click **Continue** and then click **Finish**
+8. Toggle the **ENFORCED** button for the Policy Set you created
+
 
 ---
 
 ### Step 3: Add Policy to Pipeline
 
-1. Open your pipeline
-2. Go to a previous execution and copy the **CRITICAL** output variable from the OWASP step like so:
+1. Go to a previous execution of your pipeline and copy the **CRITICAL** output variable from the OWASP step like so:
 
 ![](https://lh7-us.googleusercontent.com/docsz/AD_4nXfYQ7ba5Q_cQ9xy2AFVZ5Mt0iZPYbyQDmBonp0pBQA13Z_IUeYdK8gRSbddtf_V3bSRfbhKWDbRSUVJTx3BTCc_VmwLIWyWLkdh89nLh0sEBA6fqQxTy0NADZ0YPZwCirNycRVGUQACdItaBotovPs5Hg6CmRpQHk5ysgV6RUlhSbIbkNxmHAo?key=cRG2cvp_PHVW0KG2Gq6Y_A)
 
-3. Select the **frontend** stage
-4. Before the **Rollout Deployment** Step Group, add a **Policy** type step
+2. Select the **Deploy Front** stage
+3. Hover the mouse before **Harness Approval**, then click the **+** icon to add a new step
+4. Click **Add Step** and select the **Policy** step from the step library
 
-| Input       | Value                           | Notes                                                                                                    |
-| ----------- | ------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| Name        | `Policy - No Critical CVEs`     |                                                                                                          |
-| Entity Type | Custom                          |                                                                                                          |
-| Policy Set  | Criticals Not Allowed           | Make sure to select the Project tab                                                                      |
-| Payload     | `{"NODE_OSS_CRITICAL_COUNT": }` | Set the field type to Expression, then replace `<variable>` with the OWASP output variable CRITICAL path |
+   | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
+   | ----------- | ------------------------------- | -------------------------------------------------------------------------------------------------------- |
+   | Name        | <pre>Policy - No Critical CVEs</pre>     |                                                                                                          |
+   | Entity Type | Custom                          |                                                                                                          |
+   | Policy Set  | Criticals Not Allowed           | Make sure to select the Project tab                                                                      |
+   | Payload     | <pre>{"NODE_OSS_CRITICAL_COUNT": `<variable>` }</pre> | Set the field type to Expression, then replace `<variable>` with the OWASP output variable CRITICAL path |
 
 5. Click **Apply Changes**
 
