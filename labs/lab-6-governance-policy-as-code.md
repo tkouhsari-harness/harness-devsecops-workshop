@@ -1,18 +1,16 @@
 # Lab 6: Governance / Policy as Code
 
-## Key Outcomes
+## Summary
+Our application is now scanned before deployment! But we're not ready to go to production without any oversight. The Platform Team wants to make sure that we get an approval before deploying to prod.
 
-- Create policies that evaluate when editing pipelines
+## Objectives
 - Create policies that evaluate during pipeline execution
 - Test policy enforcement
 
-## Overview
+## Why It Matters
+This lab demonstrates how central teams can easily create and apply policies as code to enable governance and promote self-service. Policies ensure that critical steps like approvals are always included in production pipelines.
 
-In this lab, you create and apply policies as code to enable governance and promote self-service. Policies ensure that critical steps like approvals are always included in production pipelines.
-
----
-
-## Walkthrough
+## Steps
 
 ### Step 1: Create a Policy to Require Approvals
 
@@ -89,16 +87,6 @@ In this lab, you create and apply policies as code to enable governance and prom
 
 1. Click **Save** to save, then click **Run** to execute your pipeline
 2. Note that the pipeline satisfies the policy and executes
-
----
-
-## Value Callouts
-
-| Aspect | Description |
-| :--- | :--- |
-| **Guardrails, Not Roadblocks** | Policies surface issues early without slowing down developers who follow best practices. |
-| **Policy-as-Code** | Governance is defined in code and version-controlled—just like everything else. |
-| **Scalable Compliance** | Teams can move fast while meeting security and audit requirements at scale. |
 
 ---
 

@@ -80,15 +80,4 @@ This lab demonstrates how policies can be evaluated dynamically against the resu
 
 ---
 
-## Value Callouts
-
-| Aspect | Description |
-| :--- | :--- |
-| **Security by Default** | Critical vulnerabilities are automatically blocked from production. |
-| **Runtime Enforcement** | Policies evaluate real scan results, not just configuration. |
-| **Risk Mitigation** | High-severity issues are caught before deployment, reducing attack surface. |
-| **Compliance Automation** | Security policies are enforced consistently across all pipelines without manual oversight. |
-
----
-
 **Previous:** [Lab 6: Governance / Policy as Code](lab-6-governance-policy-as-code.md) · **Next:** [Lab 8: Artifact Registry](lab-8-artifact-registry.md)

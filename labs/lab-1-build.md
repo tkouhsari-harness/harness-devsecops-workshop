@@ -90,7 +90,7 @@ Navigate to the **Execution** tab and add the following steps:
    | -------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
    | Name                       | <pre>Push to Harness AR</pre>                               |                                                                          |
    | Registry Type              | Artifact Registry                     |                                                                          |
-   | Registry | containers-<username> |  |
+   | Registry | `containers-<username>` |  |
    | Package Name | <pre>workshop-app</pre> | |
    | Tags                       | <pre><+variable.username>-<+pipeline.sequenceId></pre>     | Click the +Add button under tags and then fill in with the value         |
    | **Optional Configuration** |                                                   |                                                                          |

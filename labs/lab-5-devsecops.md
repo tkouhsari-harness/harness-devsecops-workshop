@@ -27,16 +27,13 @@ This lab validates how easily security scanning can be added into the pipeline, 
 
 1. Go back to the pipeline and click the **Run** button
 
-   [!WARNING] Pipeline execution is rejected. Policy as Code saves the day!
+   > Pipeline execution is rejected. Policy as Code saves the day!
 
 ### Step 3: Add Security Scanning Steps
 
 1. Click the Edit Pipeline (pencil) button at the top right of the execution.
-2. In the **Build** stage, hover the mouse between **Compile** and **Push to DockerHub** and then click the **+** icon to add a new step
+2. In the **Build** stage, hover the mouse between **Compile** and **Push to Harness AR** and then click the **+** icon to add a new step
 3. Select **Use Template**
-
-   ![](https://lh7-us.googleusercontent.com/docsz/AD_4nXeC5rTVxlk7DeZeU_cINwcKo6Nf2wVW9brQ9MiCEfppJwmU-uH3QcNZ53qTxhur57KeySksoDBg9EqjhgKOgAEDKon6iNz9cFxozBe9VZssV-t77VNo6t1zPUvm6e2NOZJDKncxd9c2GM4HE-h-L4cIOl4u6Uqx_azoKchMdg?key=cRG2cvp_PHVW0KG2Gq6Y_A)
-
 4. Select **DevX Fortify Scan** and click **Use Template**
 
    | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |

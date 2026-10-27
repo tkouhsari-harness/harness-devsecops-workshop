@@ -76,16 +76,7 @@ While the canary deployment is ongoing and waiting for approval, navigate to the
 1. Click on the **Approval** step
 2. In the step details, click on the link next to the **Approve or Reject** button
 3. In the app, click on the **Check Release** button
-
----
-
-## Value Callouts
-
-| Aspect | Description |
-| :--- | :--- |
-| **Progressive Delivery** | Canary deployments reduce risk by gradually rolling out changes. |
-| **Manual Gates** | Approval steps ensure human oversight for critical deployments. |
-| **Environment Propagation** | Reusing environments across stages reduces configuration duplication. |
+4. In the pipeline, click the **Approve or Reject** button and then click **Approve**
 
 ---
 
