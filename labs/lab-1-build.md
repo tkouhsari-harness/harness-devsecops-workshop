@@ -90,7 +90,7 @@ Navigate to the **Execution** tab and add the following steps:
    | -------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------ |
    | Name                       | <pre>Push to Harness AR</pre>                               |                                                                          |
    | Registry Type              | Artifact Registry                     |                                                                          |
-   | Registry | containers | Click the registry selector, then click **New Registry**, set the name to **containers** and click **Create Registry** |
+   | Registry | containers-<username> |  |
    | Package Name | <pre>workshop-app</pre> | |
    | Tags                       | <pre><+variable.username>-<+pipeline.sequenceId></pre>     | Click the +Add button under tags and then fill in with the value         |
    | **Optional Configuration** |                                                   |                                                                          |
@@ -112,7 +112,7 @@ Navigate to the **Execution** tab and add the following steps:
 
 3. Wait for the pipeline to finish
 4. From the left-hand side menu, hover over **Artifact Registry** and click on **Registries**
-5. Select the **containers** registry and inspect the package that was just built and pushed to the registry 
+5. Select the **containers-<username>** registry and inspect the package that was just built and pushed to the registry 
 
 ---
 
