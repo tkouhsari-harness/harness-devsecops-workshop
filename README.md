@@ -4,13 +4,13 @@ Complete the pre-read, then work through the labs in order.
 
 ## Labs
 
-[Lab 1: Build](labs/lab-1-build.md)
+[Lab 1 - Continuous Integration - Build](labs/lab-1-build.md)
 
-[Lab 2: DevSecOps](labs/lab-2-devsecops.md)
+[Lab 2 - Continuous Deployment - Frontend](labs/lab-2-continuous-deploy-frontend.md)
 
-[Lab 3: Continuous Deploy - Frontend](labs/lab-3-continuous-deploy-frontend.md)
+[Lab 3 - Continuous Deployment - Backend](labs/lab-3-continuous-deploy-backend.md)
 
-[Lab 4: Continuous Deploy - Backend](labs/lab-4-continuous-deploy-backend.md)
+[Lab 4 - Artifact Registry](labs/lab-4-artifact-registry.md)
 
 [Lab 5: Validate Release](labs/lab-5-validate-release.md)
 

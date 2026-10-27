@@ -70,4 +70,4 @@ Harness automatically evaluates metrics during the canary phase to determine if 
 
 ---
 
-**Previous:** [Lab 4: Continuous Deploy - Backend](lab-4-continuous-deploy-backend.md) · **Next:** [Lab 6: Governance / Policy as Code](lab-6-governance-policy-as-code.md)
+**Previous:** [Lab 4 - Artifact Registry](lab-4-artifact-registry.md) · **Next:** [Lab 6: Governance / Policy as Code](lab-6-governance-policy-as-code.md)

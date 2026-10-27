@@ -1,18 +1,19 @@
-# Lab 3: Continuous Deploy - Frontend
+# Lab 2 - Continuous Deployment - Frontend
 
-## Key Outcomes
+## Summary: 
+Our application compiled successfully and the artifact is in the Harness Artifact Registry. Time to deploy it. Extend the pipeline to ship the frontend to a Kubernetes cluster using a rolling deployment. The manifests are ready, no manual kubectl commands, no deployment scripts to maintain, just point Harness at your manifests and let it handle the rest.
 
-- Extend pipelines with deployment stages
-- Deploy Kubernetes services
-- Use Harness variables
+## Objectives
 
-## Overview
+- Extend CI pipelines with Continuous Deployment stages
+- Define Kubernetes services with manifests and artifact sources
+- Use Harness expressions for dynamic artifact tagging
+- Implement rolling deployment strategies
 
-In this lab, you extend the existing pipeline to take the artifact built in the CI/Build stage and deploy it to a Kubernetes environment using a rolling deployment strategy.
+## Why It Matters
+This lab demonstrates how teams can quickly and easily deploy software without custom scripting, leveraging native rolling deployment capbilities. The lab goes under the hood to show what teams deploy (the Harness Service) and where they deploy it (the Harness Environment) are decoupled from the deployment logic defined in the pipeline. This decoupled architecture unlocks pipeline standardization at scale. 
 
----
-
-## Walkthrough
+## Steps
 
 ### Step 1: Add a Deployment Stage
 
@@ -43,10 +44,9 @@ In this lab, you extend the existing pipeline to take the artifact built in the 
    | File/Folder Path           | <pre>harness-deploy/frontend/manifests</pre>  |                                |
    | Values.yaml                | <pre>harness-deploy/frontend/values.yaml</pre>|                                |
    | **Add Artifact Source**    |                                               |                                |
-   | Artifact Repository Type   | Docker Registry                               |                                |
-   | Docker Registry Connector  | dockerhub                                     |                                |
+   | Artifact Repository Type   | Artifact Registry                               |                                |
    | Artifact Source Identifier | <pre>frontend</pre>                           |                                |
-   | Image Path                 | <pre>nikpap/harness-workshop</pre>            |                                |
+   | Image Path                 | <pre>workshop-app</pre>            |                                |
    | Tag                        | <pre><+variable.username>-<+pipeline.sequenceId></pre> | Select value, then click on the pin and select expression and paste the value |
 
 2. Click **Save** to close the service window and then click **Continue**
@@ -82,25 +82,10 @@ The target infrastructure has been pre-created. The application will be deployed
 
 ---
 
-### Step 5: Save and Run
+### Step 5: Save
 
-1. Click **Save** to finalize the deployment stage
-2. Click **Run** to execute the pipeline
-
-   | Input       | Value  | Notes |
-   | ----------- | ------ | ----- |
-   | Branch Name | `main` |       |
+1. Click **Save** to save the deployment stage
 
 ---
 
-## Value Callouts
-
-| Aspect | Description |
-| :--- | :--- |
-| **Unified Pipeline** | CI and CD are managed in a single pipeline, reducing handoffs. |
-| **Kubernetes Native** | Harness provides native Kubernetes support with manifest management. |
-| **Environment Reusability** | Environments and infrastructure can be reused across multiple services. |
-
----
-
-**Previous:** [Lab 2: DevSecOps](lab-2-devsecops.md) · **Next:** [Lab 4: Continuous Deploy - Backend](lab-4-continuous-deploy-backend.md)
+**Previous:** [Lab 1 - Continuous Integration - Build](lab-1-build.md) · **Next:** [Lab 3 - Continuous Deployment - Backend](lab-3-continuous-deploy-backend.md)
