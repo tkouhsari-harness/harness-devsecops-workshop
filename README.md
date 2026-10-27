@@ -18,7 +18,7 @@ Complete the pre-read, then work through the labs in order.
 
 [Lab 7: Governance / Policy as Code (Advanced)](labs/lab-7-governance-policy-as-code-advanced.md)
 
-## Lab Pre-Read
+## Lab Pre-Read 
 
 ### Changing Scope
 
