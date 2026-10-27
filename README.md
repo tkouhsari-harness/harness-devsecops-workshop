@@ -1,24 +1,6 @@
 # Harness DevSecOps Workshop
 
-Complete the pre-read, then work through the labs in order.
-
-## Labs
-
-[Lab 1: Continuous Integration - Build](labs/lab-1-build.md)
-
-[Lab 2: Continuous Deployment - Frontend](labs/lab-2-continuous-deploy-frontend.md)
-
-[Lab 3: Continuous Deployment - Backend](labs/lab-3-continuous-deploy-backend.md)
-
-[Lab 4: Continuous Verification](labs/lab-4-continuous-verification.md)
-
-[Lab 5: DevSecOps](labs/lab-5-devsecops.md)
-
-[Lab 6: Governance / Policy as Code](labs/lab-6-governance-policy-as-code.md)
-
-[Lab 7: Governance / Policy as Code (Advanced)](labs/lab-7-governance-policy-as-code-advanced.md)
-
-[Lab 8: Artifact Registry](labs/lab-8-artifact-registry.md)
+Complete the pre-read, then work through the labs (in the labs folder) in order.
 
 ## Lab Pre-Read
 

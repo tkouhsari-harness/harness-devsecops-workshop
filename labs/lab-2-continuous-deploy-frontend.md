@@ -1,6 +1,6 @@
 # Lab 2: Continuous Deployment - Frontend
 
-## Summary: 
+## Summary
 Our application compiled successfully and the artifact is in the Harness Artifact Registry. Time to deploy it. Extend the pipeline to ship the frontend to a Kubernetes cluster using a rolling deployment. The manifests are ready, no manual kubectl commands, no deployment scripts to maintain, just point Harness at your manifests and let it handle the rest.
 
 ## Objectives
