@@ -1,4 +1,4 @@
-# Lab 3 - Continuous Deployment - Backend
+# Lab 3: Continuous Deployment - Backend
 
 ## Summary
 Frontend is done. Now for the backend, where things can actually break in expensive ways. Let's use a canary deployment strategy with a manual approval before a broad rollout in order to minimize the blast radius. Deploy to a small slice of traffic, verify the canary is healthy, then promote to everyone. Progressive delivery made easy. 
@@ -50,7 +50,8 @@ The target infrastructure has been pre-created and was used in the previous stag
 ### Step 4: Configure Canary Deployment
 
 1. Select **Canary** and click **Use Strategy**
-2. **After** the canary deployment and **before** the canary delete step, add a **Harness Approval** step
+2. Hover the mouse between **Canary Deploy** and **Canary Delete** and then click the **+** icon to add a new step
+3. Select the **Harness Approval** step
 
    | Input                 | Value &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     | Notes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                                                                      |
    | --------------- | ---------- | ----- |
@@ -88,4 +89,4 @@ While the canary deployment is ongoing and waiting for approval, navigate to the
 
 ---
 
-**Previous:** [Lab 2 - Continuous Deployment - Frontend](lab-2-continuous-deploy-frontend.md) · **Next:** [Lab 4 - Artifact Registry](lab-4-artifact-registry.md)
+**Previous:** [Lab 2: Continuous Deployment - Frontend](lab-2-continuous-deploy-frontend.md) · **Next:** [Lab 4: Continuous Verification](lab-4-continuous-verification.md)

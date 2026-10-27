@@ -1,17 +1,16 @@
-# Lab 5: Validate Release
+# Lab 4: Continuous Verification
 
-## Key Outcomes
+## Summary
+Canary deployments are great, but how do you know the canary is actually healthy? Continuous verification integrates with your observability tools and uses ML to compare metrics and logs against the baseline in real-time. No manual dashboard watching required. We'll also add chaos experiments to stress-test the deployment. If the canary survives intentional chaos, it's ready for production.
 
-- Identify traffic differences between normal and canary instances
-- Automate release validation
+## Objectives
+- Configure continuous verification to compare canary metrics against baseline using AI/ML
+- Automate go/no-go decisions based on real-time observability data
 
-## Overview
+## Why It Matters
+This lab validates how Harness detects deployment issues based on real system behavior, not just pipeline success. Participants experience how deployments are continuously verified using telemetry + AI/ML, enabling faster detection and rollback of bad releases before they impact users, eliminating the need for manual monitoring, and reducing time-to-market.
 
-In this lab, you validate canary deployments by observing traffic distribution and monitoring application behavior during progressive rollouts.
-
----
-
-## Walkthrough
+## Steps
 
 ### Step 1: Replace Manual Approval with Continuous Verification
 
@@ -52,22 +51,4 @@ In this lab, you validate canary deployments by observing traffic distribution a
 Harness automatically evaluates metrics during the canary phase to determine if the application is healthy
 
 
----
-
-### Bonus Activities
-
-- If verification fails, Harness defaults to manual intervention. Decide what happens next (rollback, ignore, etc.)
-- Add a canary rollout from 10% to 50% traffic and observe how this impacts traffic distribution
-
----
-
-## Value Callouts
-
-| Aspect | Description |
-| :--- | :--- |
-| **Automated Validation** | Harness validates deployments automatically, eliminating manual post-deployment monitoring. |
-| **Traffic Shaping** | Canary deployments allow controlled traffic distribution for risk mitigation. |
-
----
-
-**Previous:** [Lab 4 - Artifact Registry](lab-4-artifact-registry.md) · **Next:** [Lab 6: Governance / Policy as Code](lab-6-governance-policy-as-code.md)
+**Previous:** [Lab 3: Continuous Deployment - Backend](lab-3-continuous-deploy-backend.md) · **Next:** [Lab 5: DevSecOps](lab-5-devsecops.md)

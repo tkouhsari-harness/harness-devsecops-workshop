@@ -1,22 +1,35 @@
-# Lab 2: DevSecOps
+# Lab 5: DevSecOps
 
-## Key Outcomes
+## Summary
+We've got our application into production and automatically verified that things look good from an observability perspective. But what if we've introduced vulnerabilities into prod? In fact, AppSec is going to start blocking builds and deployments if we don't run security scans.
 
+## Objectives
 - Understand how governance plays a role in the path to production
 - Leverage reusable templates to standardize security scanning
 - Achieve DevSecOps practices with minimal developer friction
 
-## Overview
-
-In this lab, the security team has implemented orchestration of **Fortify** and **OWASP** scans in reusable templates. Policies enforce the inclusion of these templates in all pipelines, ensuring security scans are always executed before deployment.
-
-<img src="https://lh7-us.googleusercontent.com/docsz/AD_4nXcLr5TGcKRWOjVgB_sCAHHEeLPyd6EBdnkt2-mq_imTkZbQMEwJD03Q1wZyhWqHxoCNIIYWJWlRbnZrvZn2pPYIwTzXlOGdhMDEgn-J2JnK7lVastmfpdwTqDHXjpP0DK3TgU1gM-Ec_0iZLicWV7KpgW2FdXUCcAtraDGaEz8hI3dpWGLXkg?key=cRG2cvp_PHVW0KG2Gq6Y_A" width="50%">
+## Why It Matters
+This lab validates how easily security scanning can be added into the pipeline, how the results from all scanners are automatically gathered, deduplicated/normalized/prioritized and presented in an easy to understand view for developers, and how policy as code can be used to enforce required steps.
 
 ---
 
-## Walkthrough
+## Steps
 
-### Step 1: Add Security Scanning Steps
+### Step 1: Enable Policy
+
+1. From the left-hand side menu, hover over **Project Settings** and select **Policies** (towards the bottom of the 3rd column)
+2. Click on the **Policy Sets** tab
+3. Toggle the **Enforced** button for `<username>-policyset`
+
+   This Policy Set includes a Policy that enforces that security scanning is included in the pipeline
+
+### Step 2: Run Pipeline
+
+1. Go back to the pipeline and click the **Run** button
+
+   [!WARNING] Pipeline execution is rejected. Policy as Code saves the day!
+
+### Step 3: Add Security Scanning Steps
 
 1. Click the Edit Pipeline (pencil) button at the top right of the execution.
 2. In the **Build** stage, hover the mouse between **Compile** and **Push to DockerHub** and then click the **+** icon to add a new step
@@ -34,7 +47,7 @@ In this lab, the security team has implemented orchestration of **Fortify** and 
 
 ---
 
-### Step 2: Add OWASP Scan
+### Step 4: Add OWASP Scan
 
 1. Hover the mouse between **Fortify** and **Push to DockerHub** and then click the **+** icon to add a new step
 2. Select **Use Template**
@@ -48,7 +61,7 @@ In this lab, the security team has implemented orchestration of **Fortify** and 
 
 ---
 
-### Step 3: Run the Pipeline
+### Step 5: Run the Pipeline
 
 1. Click **Save** and then **Run** to execute the pipeline
 
@@ -60,15 +73,4 @@ In this lab, the security team has implemented orchestration of **Fortify** and 
 
 ---
 
-## Value Callouts
-
-| Aspect | Description |
-| :--- | :--- |
-| **Shift Left Security** | Security scans run during the build phase, catching vulnerabilities before deployment. |
-| **Template Reusability** | Security steps are defined once and reused across all pipelines, ensuring consistency. |
-| **Policy Enforcement** | Governance policies ensure security scans cannot be skipped. |
-| **Unified View** | All vulnerabilities are deduplicated and prioritized in a single dashboard. |
-
----
-
-**Previous:** [Lab 1: Build](lab-1-build.md) · **Next:** [Lab 3: Continuous Deploy - Frontend](lab-3-continuous-deploy-frontend.md)
+**Previous:** [Lab 4: Continuous Verification](lab-4-continuous-verification.md) · **Next:** [Lab 6: Governance / Policy as Code](lab-6-governance-policy-as-code.md)

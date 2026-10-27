@@ -1,4 +1,4 @@
-# Lab 2 - Continuous Deployment - Frontend
+# Lab 2: Continuous Deployment - Frontend
 
 ## Summary: 
 Our application compiled successfully and the artifact is in the Harness Artifact Registry. Time to deploy it. Extend the pipeline to ship the frontend to a Kubernetes cluster using a rolling deployment. The manifests are ready, no manual kubectl commands, no deployment scripts to maintain, just point Harness at your manifests and let it handle the rest.
@@ -39,15 +39,16 @@ This lab demonstrates how teams can quickly and easily deploy software without c
    | Manifest Type              | K8s Manifest                                  |                                |
    | K8s Manifest Store         | Code                                          |                                |
    | Manifest Identifier        | <pre>templates</pre>                          |                                |
-   | Repository                 | <pre>harness-devsecops</pre>                  |                                |
+   | Repository                 | harness-devsecops                  |                                |
    | Branch                     | <pre>main</pre>                               |                                |
    | File/Folder Path           | <pre>harness-deploy/frontend/manifests</pre>  |                                |
-   | Values.yaml                | <pre>harness-deploy/frontend/values.yaml</pre>|                                |
+   | Values.yaml                | <pre>harness-deploy/frontend/values.yaml</pre>| Click **+Add File** then enter the value                                |
    | **Add Artifact Source**    |                                               |                                |
    | Artifact Repository Type   | Artifact Registry                               |                                |
    | Artifact Source Identifier | <pre>frontend</pre>                           |                                |
-   | Image Path                 | <pre>workshop-app</pre>            |                                |
-   | Tag                        | <pre><+variable.username>-<+pipeline.sequenceId></pre> | Select value, then click on the pin and select expression and paste the value |
+   | Registry | `containers-<username>` |  |
+   | Package Name               | <pre>workshop-app</pre>            |                                |
+   | Tag                        | <pre><+variable.username>-<+pipeline.sequenceId></pre> | Click on the sigma button, select expression, then paste the value |
 
 2. Click **Save** to close the service window and then click **Continue**
 
@@ -84,8 +85,8 @@ The target infrastructure has been pre-created. The application will be deployed
 
 ### Step 5: Save
 
-1. Click **Save** to save the deployment stage
+1. Click **Save** to save the pipeline
 
 ---
 
-**Previous:** [Lab 1 - Continuous Integration - Build](lab-1-build.md) · **Next:** [Lab 3 - Continuous Deployment - Backend](lab-3-continuous-deploy-backend.md)
+**Previous:** [Lab 1: Continuous Integration - Build](lab-1-build.md) · **Next:** [Lab 3: Continuous Deployment - Backend](lab-3-continuous-deploy-backend.md)

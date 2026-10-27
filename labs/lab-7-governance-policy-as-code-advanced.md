@@ -1,17 +1,16 @@
 # Lab 7: Governance / Policy as Code (Advanced)
 
-## Key Outcomes
+## Summary
+Our pipeline runs security scanners as part of the build process. This is a must as AppSec has enforced this via policy. However, we can still end up with critical vulnerabilities in production as there are no gates to stop based on findings.
 
+## Objectives
 - Block critical CVEs from reaching production
 - Enforce security policies during runtime
 
-## Overview
+## Why It Matters
+This lab demonstrates how policies can be evaluated dynamically against the results of steps within the pipeline, allowing central teams to enforce policies on real-time data gathered throughout an execution.
 
-In this lab, you create an advanced policy that blocks deployments when critical vulnerabilities are detected by security scanners like OWASP.
-
----
-
-## Walkthrough
+## Steps
 
 ### Step 1: Create a Policy to Block Critical CVEs
 
@@ -92,4 +91,4 @@ In this lab, you create an advanced policy that blocks deployments when critical
 
 ---
 
-**Previous:** [Lab 6: Governance / Policy as Code](lab-6-governance-policy-as-code.md)
+**Previous:** [Lab 6: Governance / Policy as Code](lab-6-governance-policy-as-code.md) · **Next:** [Lab 8: Artifact Registry](lab-8-artifact-registry.md)

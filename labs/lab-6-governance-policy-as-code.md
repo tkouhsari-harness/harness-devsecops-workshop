@@ -102,4 +102,4 @@ In this lab, you create and apply policies as code to enable governance and prom
 
 ---
 
-**Previous:** [Lab 5: Validate Release](lab-5-validate-release.md) · **Next:** [Lab 7: Governance / Policy as Code (Advanced)](lab-7-governance-policy-as-code-advanced.md)
+**Previous:** [Lab 5: DevSecOps](lab-5-devsecops.md) · **Next:** [Lab 7: Governance / Policy as Code (Advanced)](lab-7-governance-policy-as-code-advanced.md)
